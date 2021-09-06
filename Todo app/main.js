@@ -17,6 +17,8 @@ function addTodo(event) {
     newTodo.classList.add('todo-item');
 
     todoDiv.appendChild(newTodo);
+    // Add todo to localstorage
+    savelocalTodos(todoInput.value);
     // Checkmark button
     const completedButton = document.createElement('button');
     completedButton.innerHTML = '<i class="fas fa-check"></i>'
@@ -39,7 +41,8 @@ function deleteCheck(event) {
     if (clickedItem.classList[0] === 'trash-btn') {
         const todo = clickedItem.parentElement;
         todo.classList.add('fall');
-        todo.addEventListener('transitionend', function(){
+        removeTodos(todo);
+        todo.addEventListener('transitionend', function () {
             todo.remove();
         });
     }
@@ -53,8 +56,8 @@ function deleteCheck(event) {
 
 function filterTodo(event) {
     const todos = todoList.childNodes;
-    todos.forEach(function(todo){
-        
+    todos.forEach(function (todo) {
+
         switch (event.target.value) {
             case 'all':
                 todo.style.display = 'flex';
@@ -77,7 +80,70 @@ function filterTodo(event) {
     });
 }
 
+function savelocalTodos(todo) {
+    // Do I already have sth on my local storage?
+    let todos;
+    if (localStorage.getItem('todos') === null){
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem('todos'));
+    }
+
+    todos.push(todo);
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function getTodos(todo) {
+    // Do I already have sth on my local storage?
+    let todos;
+    if (localStorage.getItem('todos') === null){
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem('todos'));
+    }
+
+    todos.forEach(function(todo){
+        // Create a Todo div
+        const todoDiv = document.createElement('div');
+        todoDiv.classList.add('todo');
+        // Create li
+        const newTodo = document.createElement('li');
+        newTodo.innerText = todo;
+        newTodo.classList.add('todo-item');
+        todoDiv.appendChild(newTodo);
+        // Checkmark button
+        const completedButton = document.createElement('button');
+        completedButton.innerHTML = '<i class="fas fa-check"></i>'
+        completedButton.classList.add('completed-btn');
+        todoDiv.appendChild(completedButton);
+        // Trash button
+        const trashButton = document.createElement('button');
+        trashButton.innerHTML = '<i class="fas fa-trash"></i>'
+        trashButton.classList.add('trash-btn');
+        todoDiv.appendChild(trashButton);
+        // Append to Todo List
+        todoList.appendChild(todoDiv);
+    });
+}
+
+function removeTodos(todo) {
+    // Do I already have sth on my local storage?
+    let todos;
+    if (localStorage.getItem('todos') === null){
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem('todos'));
+    }
+
+    let toBeRemoved = todo.children[0].innerText;
+    todos.splice(todos.indexOf(toBeRemoved), 1);
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+
 // Event Listner
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);
 filterOption.addEventListener('click', filterTodo);
+
+document.addEventListener('DOMContentLoaded', getTodos);
