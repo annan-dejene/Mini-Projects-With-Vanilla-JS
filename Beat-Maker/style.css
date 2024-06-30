@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* box-sizing: border-box; when we add padding or border to an element, the padding and border are included in the width and height of the element and the element does not grow in size. */
+}
+
+body {
+  font-family: sans-serif;
+}
+
+i,
+svg {
+  pointer-events: none; /* pointer-events: none; makes the element not respond to pointer events, like hovering or clicking. We are doing this because later on when we add event listeners to the buttons, we don't want the icons to interfere with the event listeners. */
+}
+
+.sequencer {
+  /* .sequencer  is a wrapper class for each sequencers -- using it to center the whole thing*/
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.kick-pad,
+.snare-pad,
+.hihat-pad {
+  width: 5rem;
+  height: 5rem;
+  margin: 1rem 0.5rem;
+  cursor: pointer;
+}
+
+.kick-pad {
+  background: rgba(91, 156, 213, 0.638);
+}
+
+.kick-pad.active {
+  background: rgb(54, 137, 210);
+}
+
+.snare-pad {
+  background: rgba(236, 117, 226, 0.607);
+}
+
+.snare-pad.active {
+  background: rgb(241, 83, 228);
+}
+
+.hihat-pad {
+  background: rgba(232, 156, 42, 0.629);
+}
+
+.hihat-pad.active {
+  background: rgb(240, 151, 16);
+}
+
+.kick-track,
+.snare-track,
+.hihat-track {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.kick,
+.snare,
+.hihat {
+  display: flex;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  flex: 1;
+}
+
+.controls button {
+  padding: 1rem;
+  border: none;
+  background: rgb(77, 77, 77);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+
+  transition: all 0.5s ease;
+}
+
+.pad {
+  transition: all 0.5s ease;
+}
+
+.play {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border: none;
+  background: rgb(77, 77, 77);
+  color: white;
+  margin-top: 3rem;
+}
+
+select {
+  padding: 1rem;
+  font-size: 1rem;
+}
