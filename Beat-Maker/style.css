@@ -22,6 +22,10 @@ svg {
   justify-content: center;
 }
 
+#logo {
+  margin-top: 1.5rem;
+}
+
 .kick-pad,
 .snare-pad,
 .hihat-pad {
