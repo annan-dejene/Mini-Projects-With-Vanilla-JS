@@ -101,9 +101,19 @@ svg {
   background: rgb(77, 77, 77);
   color: white;
   margin-top: 3rem;
+  cursor: pointer;
 }
 
 select {
   padding: 1rem;
   font-size: 1rem;
+}
+
+@keyframes playTrack {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
 }
