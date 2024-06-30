@@ -7,6 +7,7 @@ class DrumKit {
     this.hihatAudio = document.querySelector(".hihat-sound");
     this.index = 0;
     this.bpm = 250; // (Beats per minute) To control the speed of the sound
+    this.isPlaying = null;
   }
 
   activePad() {
@@ -40,9 +41,22 @@ class DrumKit {
 
   start() {
     const interval = (60 / this.bpm) * 1000;
-    setInterval(() => {
-      this.repeat();
-    }, interval);
+    // Everytime we come to the start function we want to check if it's already playing or not
+    if (!this.isPlaying) {
+      // If it's not playing, then start the interval
+      // the setInterval function will return an id, which we can use to clear the interval
+      this.isPlaying = setInterval(() => {
+        this.repeat();
+      }, interval);
+      // Change the text of the play button
+      this.playBtn.innerText = "Stop";
+    } else {
+      // If it's playing, then clear the interval
+      clearInterval(this.isPlaying);
+      this.isPlaying = null;
+      // Change the text of the play button
+      this.playBtn.innerText = "Play";
+    }
   }
 }
 
