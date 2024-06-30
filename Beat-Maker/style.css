@@ -79,7 +79,7 @@ svg {
   flex: 1;
 }
 
-.controls button {
+.mute {
   padding: 1rem;
   border: none;
   background: rgb(77, 77, 77);
@@ -88,6 +88,10 @@ svg {
   cursor: pointer;
 
   transition: all 0.5s ease;
+}
+
+.mute.active {
+  background: rgb(109, 106, 106);
 }
 
 .pad {
