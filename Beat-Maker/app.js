@@ -2,10 +2,6 @@ class DrumKit {
   constructor() {
     this.pads = document.querySelectorAll(".pad");
     this.playBtn = document.querySelector(".play");
-    // Current sounds
-    this.currentKick = "/Beat-Maker/sounds/kick-classic.wav";
-    this.currentSnare = "/Beat-Maker/sounds/snare-acoustic01.wav";
-    this.currentHihat = "/Beat-Maker/sounds/hihat-acoustic01.wav";
 
     // Audio
     this.kickAudio = document.querySelector(".kick-sound");
