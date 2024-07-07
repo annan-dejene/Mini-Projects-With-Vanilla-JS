@@ -116,6 +116,9 @@ function hslControls(e) {
   // colorDivs[index].querySelector("h2").innerText = color.hex(); --> This will cause problems because when the color becomes black or white, since we're using that color to set the saturation, and hue, the color won't change anymore. So, we need to use the color variable instead of the colorDivs[index].querySelector("h2").innerText
 
   colorDivs[index].style.backgroundColor = color;
+
+  // colorize sliders/inputs
+  colorizeSliders(color, hue, brightness, saturation);
 }
 
 function updateTextUI(index) {
