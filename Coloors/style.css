@@ -19,6 +19,10 @@ i {
   pointer-events: none;
 }
 
+.fa-lock-open {
+  margin-bottom: 3rem;
+}
+
 .colors {
   min-height: 80vh;
   display: flex;
@@ -46,15 +50,16 @@ i {
   flex-direction: column;
   position: absolute;
   bottom: 0%;
-  background: rgb(249, 234, 234);
+  background: rgb(161, 157, 157);
+  color: white;
   padding: 1rem;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   width: 80%;
-  pointer-events: none;
+  /* pointer-events: none; */
   /* Adding an adjustment class */
-  opacity: 0;
-  transform: translateY(100px);
+  /* opacity: 0; */
+  /* transform: translateY(100px); */
   transition: all 0.5s ease-in-out;
 }
 
@@ -71,7 +76,7 @@ i {
   padding: 0.5rem;
   border: none;
   border-top-right-radius: 1rem;
-  background: rgb(73, 73, 73);
+  background: rgb(105, 97, 87);
   color: white;
   cursor: pointer;
   font-weight: bold;
