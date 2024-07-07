@@ -1,4 +1,4 @@
-// Global selections and variables
+// ------------------------------------------------- Global selections and variables -------------------------------------------
 const colorDivs = document.querySelectorAll(".color");
 const generateBtn = document.querySelector(".generate");
 const sliders = document.querySelectorAll("input[type='range']");
@@ -10,6 +10,12 @@ let initialColors;
 
 sliders.forEach((slider) => {
   slider.addEventListener("input", hslControls);
+});
+
+colorDivs.forEach((div, index) => {
+  div.addEventListener("change", () => {
+    updateTextUI(index);
+  });
 });
 
 //  -------------------------------------------------------- Functions --------------------------------------------------------
@@ -102,9 +108,25 @@ function hslControls(e) {
     .set("hsl.l", brightness.value)
     .set("hsl.h", hue.value);
 
-  // colorDivs[index].querySelector("h2").innerText = color.hex();
+  // colorDivs[index].querySelector("h2").innerText = color.hex(); --> This will cause problems because when the color becomes black or white, since we're using that color to set the saturation, and hue, the color won't change anymore. So, we need to use the color variable instead of the colorDivs[index].querySelector("h2").innerText
 
   colorDivs[index].style.backgroundColor = color;
+}
+
+function updateTextUI(index) {
+  const activeDiv = colorDivs[index];
+  const color = chroma(activeDiv.style.backgroundColor);
+  const textHex = activeDiv.querySelector("h2");
+  const icons = activeDiv.querySelectorAll(".controls button");
+
+  textHex.innerText = color.hex();
+
+  // Check contrast
+  checkTextContrast(color, textHex);
+
+  for (let icon of icons) {
+    checkTextContrast(color, icon);
+  }
 }
 
 randomColors();
