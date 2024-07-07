@@ -41,7 +41,7 @@ i {
 }
 
 .color h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
@@ -50,8 +50,8 @@ i {
   flex-direction: column;
   position: absolute;
   bottom: 0%;
-  background: rgb(161, 157, 157);
-  color: white;
+  background: white;
+  color: rgb(207, 204, 204);
   padding: 1rem;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
@@ -117,4 +117,16 @@ i {
   background: none;
   cursor: pointer;
   margin: 2rem 0;
+}
+
+/* Slider */
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 1rem 0rem;
+  width: 100%;
+  position: relative;
+  border-radius: 1rem;
+  cursor: pointer;
 }
