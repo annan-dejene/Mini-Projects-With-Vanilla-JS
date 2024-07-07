@@ -36,9 +36,13 @@ function generateHex() {
 }
 
 function randomColors() {
+  initialColors = []; // Reset everytime we generate new colors (refresh the page)
   colorDivs.forEach((div, index) => {
     const hexText = div.children[0];
     const randomColor = generateHex();
+
+    // Add the color to the initialColors array
+    initialColors.push(chroma(randomColor).hex()); // chroma(randomColor).hex() is used to convert the color to hex
 
     // Add color to div bg
     div.style.backgroundColor = randomColor;
@@ -101,7 +105,8 @@ function hslControls(e) {
   const brightness = sliders[1];
   const saturation = sliders[2];
 
-  const bgColor = colorDivs[index].querySelector("h2").innerText;
+  // const bgColor = colorDivs[index].querySelector("h2").innerText // --> This will cause problems because when the color becomes black or white, since we're using that color to set the saturation, and hue, the color won't change anymore. So, we need to use the initialColors array instead of the colorDivs[index].querySelector("h2").innerText
+  const bgColor = initialColors[index]; // We're using initialColors array since we know the original colors will be available even after we change the color using the sliders
 
   let color = chroma(bgColor)
     .set("hsl.s", saturation.value)
