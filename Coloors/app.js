@@ -7,6 +7,9 @@ const currentHexes = document.querySelectorAll(".color h2");
 const copyContainer = document.querySelector(".copy-container");
 const copyPopup = document.querySelector(".copy-popup");
 
+const adjustButtons = document.querySelectorAll(".adjust");
+const lockButtons = document.querySelectorAll(".lock");
+
 let initialColors;
 
 //  -------------------------------------------------------- Event Listners ---------------------------------------------------
@@ -36,6 +39,21 @@ currentHexes.forEach((hex) => {
 copyPopup.addEventListener("transitionend", () => {
   copyPopup.classList.remove("active");
   copyContainer.classList.remove("active");
+});
+
+// Sliders after click
+adjustButtons.forEach((adjustBtn) => {
+  adjustBtn.addEventListener("click", (event) => {
+    const adjustSliders = event.target.parentElement.parentElement.children[2];
+    adjustSliders.classList.toggle("active");
+
+    // Remove slider with the X btn
+    const closeAdjustment = adjustSliders.children[0];
+
+    closeAdjustment.addEventListener("click", () => {
+      adjustSliders.classList.remove("active");
+    });
+  });
 });
 
 //  -------------------------------------------------------- Functions --------------------------------------------------------
@@ -70,6 +88,13 @@ function randomColors() {
 
     // Check for text contrast relative to the div's background color
     checkTextContrast(randomColor, hexText);
+
+    // Check Contrast for buttons
+    const currAdjustBtn = adjustButtons[initialColors.length - 1];
+    const currLockBtn = lockButtons[initialColors.length - 1];
+
+    checkTextContrast(randomColor, currAdjustBtn);
+    checkTextContrast(randomColor, currLockBtn);
 
     // Initial colorize sliders
     const color = chroma(randomColor);

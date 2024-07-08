@@ -56,14 +56,16 @@ i {
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   width: 80%;
-  /* pointer-events: none; */
+
+  pointer-events: none;
   /* Adding an adjustment class */
-  /* opacity: 0; */
-  /* transform: translateY(100px); */
+  opacity: 0;
+  transform: translateY(100px);
+
   transition: all 0.5s ease-in-out;
 }
 
-.sldiers.active {
+.sliders.active {
   opacity: 1;
   transform: translateY(0px);
   pointer-events: all;
