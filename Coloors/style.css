@@ -97,6 +97,7 @@ i {
   align-items: center;
   justify-content: space-evenly;
   height: 20vh;
+  padding-top: 1.2rem;
 }
 
 .panel button {
@@ -179,8 +180,13 @@ input[type="range"] {
 
   min-width: 30vw;
   min-height: 30vh;
+}
 
-  font-size: 1.2rem;
+.copy-popup h3,
+.save-popup h4,
+.library-popup h4 {
+  font-size: 1.5rem;
+  margin: 1rem;
 }
 
 .copy-popup.active,
@@ -192,6 +198,7 @@ input[type="range"] {
 .save-name {
   font-size: 1.5rem;
   padding: 0.3rem;
+  margin: 1rem;
 }
 
 .submit-save {
@@ -201,4 +208,5 @@ input[type="range"] {
   color: white;
   cursor: pointer;
   border-radius: 1rem;
+  margin: 1rem;
 }
