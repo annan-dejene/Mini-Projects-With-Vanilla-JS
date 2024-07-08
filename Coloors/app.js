@@ -10,6 +10,9 @@ const copyPopup = document.querySelector(".copy-popup");
 const adjustButtons = document.querySelectorAll(".adjust");
 const lockButtons = document.querySelectorAll(".lock");
 
+// for local storage --  an array of objects
+let savedPalettes = [];
+
 let initialColors;
 
 //  -------------------------------------------------------- Event Listners ---------------------------------------------------
@@ -206,6 +209,30 @@ function updateTextUI(index) {
   for (let icon of icons) {
     checkTextContrast(color, icon);
   }
+}
+
+// Implement save to palette and LOCAL Storage stuff
+const saveBtn = document.querySelector(".save");
+const submitSave = document.querySelector(".submit-save");
+const closeSave = document.querySelector(".close-save");
+const saveContainer = document.querySelector(".save-container");
+const saveInput = document.querySelector(".save-name");
+
+// Event Listners
+saveBtn.addEventListener("click", openPalette);
+
+closeSave.addEventListener("click", closePalette);
+
+function openPalette(event) {
+  const popup = saveContainer.children[0];
+  saveContainer.classList.add("active");
+  popup.classList.add("active");
+}
+
+function closePalette(event) {
+  const popup = saveContainer.children[0];
+  saveContainer.classList.remove("active");
+  popup.classList.remove("active");
 }
 
 randomColors();
