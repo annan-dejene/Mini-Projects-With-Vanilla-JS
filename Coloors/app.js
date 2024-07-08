@@ -300,6 +300,21 @@ function savePalette(event) {
     palette.appendChild(paletteBtn);
 
     libraryContainer.children[0].appendChild(palette);
+
+    // Applying color if palette selected
+    paletteBtn.addEventListener("click", (event) => {
+      closeLibrary();
+      const paletteIndex = event.target.classList[1];
+      initialColors = [];
+      savedPalettes[paletteIndex].colors.forEach((color, idx) => {
+        initialColors.push(color);
+        colorDivs[idx].style.backgroundColor = color;
+        const text = colorDivs[idx].children[0];
+        text.innerText = color;
+        checkTextContrast(color, text);
+        updateTextUI(idx);
+      });
+    });
   }
 }
 
