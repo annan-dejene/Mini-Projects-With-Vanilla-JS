@@ -130,3 +130,47 @@ input[type="range"] {
   border-radius: 1rem;
   cursor: pointer;
 }
+
+/* Copy to Clipboard Pop up */
+
+.copy-container {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.copy-container.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.copy-popup {
+  background: white;
+
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  transition: transform 0.5s ease;
+  transform: translateY(-2rem);
+
+  min-width: 20vw;
+  min-height: 20vh;
+
+  font-size: 1.2rem;
+}
+
+.copy-popup.active {
+  transform: translateY(0rem);
+}
