@@ -21,6 +21,7 @@ colorDivs.forEach((div, index) => {
   });
 });
 
+// Clipboard functionality
 currentHexes.forEach((hex) => {
   hex.addEventListener("click", () => {
     // Copy the hex to clipboard
@@ -33,8 +34,8 @@ currentHexes.forEach((hex) => {
 });
 
 copyPopup.addEventListener("transitionend", () => {
-  copyContainer.classList.remove("active");
   copyPopup.classList.remove("active");
+  copyContainer.classList.remove("active");
 });
 
 //  -------------------------------------------------------- Functions --------------------------------------------------------
