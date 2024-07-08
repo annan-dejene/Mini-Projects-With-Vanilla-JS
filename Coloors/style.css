@@ -210,3 +210,46 @@ input[type="range"] {
   border-radius: 1rem;
   margin: 1rem;
 }
+
+/* Library Palettes */
+
+.library-popup {
+  width: 40%;
+}
+
+.library-popup > h4 {
+  font-size: 2rem;
+}
+
+.custom-palette {
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.custom-palette h4 {
+  flex: 1;
+}
+
+.small-preview {
+  flex: 2;
+  display: flex;
+  flex-wrap: wrap;
+}
+.small-preview > div {
+  width: 2rem;
+  height: 2rem;
+}
+
+.pick-palette-btn {
+  border: none;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+}
+
+.pick-palette-btn:hover {
+  background: rgb(87, 95, 105);
+  color: white;
+}
