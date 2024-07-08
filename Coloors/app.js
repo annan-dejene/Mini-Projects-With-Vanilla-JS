@@ -4,6 +4,9 @@ const generateBtn = document.querySelector(".generate");
 const sliders = document.querySelectorAll("input[type='range']");
 const currentHexes = document.querySelectorAll(".color h2");
 
+const copyContainer = document.querySelector(".copy-container");
+const copyPopup = document.querySelector(".copy-popup");
+
 let initialColors;
 
 //  -------------------------------------------------------- Event Listners ---------------------------------------------------
@@ -16,6 +19,22 @@ colorDivs.forEach((div, index) => {
   div.addEventListener("change", () => {
     updateTextUI(index);
   });
+});
+
+currentHexes.forEach((hex) => {
+  hex.addEventListener("click", () => {
+    // Copy the hex to clipboard
+    navigator.clipboard.writeText(hex.innerText);
+
+    // Show confirmation
+    copyContainer.classList.add("active");
+    copyPopup.classList.add("active");
+  });
+});
+
+copyPopup.addEventListener("transitionend", () => {
+  copyContainer.classList.remove("active");
+  copyPopup.classList.remove("active");
 });
 
 //  -------------------------------------------------------- Functions --------------------------------------------------------
