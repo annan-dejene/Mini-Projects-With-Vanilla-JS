@@ -315,6 +315,8 @@ function savePalette(event) {
         updateTextUI(idx);
       });
     });
+
+    resetInput();
   }
 }
 
@@ -339,6 +341,27 @@ function openLibrary() {
 function closeLibrary() {
   libraryContainer.classList.remove("active");
   libraryPopup.classList.remove("active");
+}
+
+function resetInput() {
+  const sliders = document.querySelectorAll(".sliders input");
+  sliders.forEach((slider) => {
+    if (slider.name === "hue") {
+      const huecolor = initialColor[slider.getAttribute("data-hue")];
+      const huevalue = chroma(huecolor).hsl()[0];
+      slider.value = Math.floor(huevalue);
+    }
+    if (slider.name === "brightness") {
+      const brightcolor = initialColor[slider.getAttribute("data-bright")];
+      const brightvalue = chroma(brightcolor).hsl()[2];
+      slider.value = Math.floor(brightvalue * 100) / 100;
+    }
+    if (slider.name === "saturation") {
+      const satcolor = initialColor[slider.getAttribute("data-sat")];
+      const satvalue = chroma(satcolor).hsl()[2];
+      slider.value = Math.floor(satvalue * 100) / 100;
+    }
+  });
 }
 
 randomColors();
