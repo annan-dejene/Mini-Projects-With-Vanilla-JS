@@ -14,6 +14,8 @@ let initialColors;
 
 //  -------------------------------------------------------- Event Listners ---------------------------------------------------
 
+generateBtn.addEventListener("click", randomColors);
+
 sliders.forEach((slider) => {
   slider.addEventListener("input", hslControls);
 });
