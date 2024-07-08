@@ -58,6 +58,23 @@ adjustButtons.forEach((adjustBtn) => {
   });
 });
 
+// Lock a color palette
+lockButtons.forEach((lockBtn, idx) => {
+  lockBtn.addEventListener("click", () => {
+    // Save that palette
+    lockBtn.parentElement.parentElement.classList.toggle("locked");
+
+    // change the icon
+    lockBtn.classList.toggle("locked");
+
+    if (lockBtn.classList.contains("locked")) {
+      lockBtn.innerHTML = `<i class="fa fa-lock" aria-hidden="true"></i>`;
+    } else {
+      lockBtn.innerHTML = `<i class="fas fa-lock-open"></i>`;
+    }
+  });
+});
+
 //  -------------------------------------------------------- Functions --------------------------------------------------------
 
 // Color generator
@@ -81,25 +98,32 @@ function randomColors() {
     const hexText = div.children[0];
     const randomColor = generateHex();
 
+    const prevColor = hexText.innerText;
+
     // Add the color to the initialColors array
     initialColors.push(chroma(randomColor).hex()); // chroma(randomColor).hex() is used to convert the color to hex
 
+    // Check if the color palette div has locked
+    if (div.classList.contains("locked")) {
+      initialColors[index] = prevColor;
+    }
+
     // Add color to div bg
-    div.style.backgroundColor = randomColor;
-    hexText.innerText = randomColor;
+    div.style.backgroundColor = initialColors[index];
+    hexText.innerText = initialColors[index];
 
     // Check for text contrast relative to the div's background color
-    checkTextContrast(randomColor, hexText);
+    checkTextContrast(initialColors[index], hexText);
 
     // Check Contrast for buttons
     const currAdjustBtn = adjustButtons[initialColors.length - 1];
     const currLockBtn = lockButtons[initialColors.length - 1];
 
-    checkTextContrast(randomColor, currAdjustBtn);
-    checkTextContrast(randomColor, currLockBtn);
+    checkTextContrast(initialColors[index], currAdjustBtn);
+    checkTextContrast(initialColors[index], currLockBtn);
 
     // Initial colorize sliders
-    const color = chroma(randomColor);
+    const color = chroma(initialColors[index]);
     const sliders = div.querySelectorAll(".sliders input");
     const hue = sliders[0];
     const brightness = sliders[1];

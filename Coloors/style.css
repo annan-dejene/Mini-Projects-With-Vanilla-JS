@@ -19,7 +19,8 @@ i {
   pointer-events: none;
 }
 
-.fa-lock-open {
+.fa-lock-open,
+.fa-lock {
   margin-bottom: 3rem;
 }
 
