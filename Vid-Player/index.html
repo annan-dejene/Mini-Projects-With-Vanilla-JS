@@ -3,7 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/Vid-Player/css/progress.css" />
+    <link rel="stylesheet" href="/Vid-Player/css/style.css" />
     <title>Vid Player</title>
   </head>
-  <body></body>
+  <body>
+    <h1>Vid Player</h1>
+
+    <video
+      src="/Vid-Player/videos/gone.mp4"
+      id="video"
+      class="screen"
+      poster="/Vid-Player/img/poster.png"
+    ></video>
+
+    <div class="controls">
+      <button class="btn" id="play">
+        <i class="fa fa-play fa-2x"></i>
+      </button>
+      <button class="btn" id="stop">
+        <i class="fa fa-stop fa-2x"></i>
+      </button>
+
+      <input
+        type="range"
+        id="progress"
+        class="progress"
+        min="0"
+        max="100"
+        step="0.1"
+        value="0"
+      />
+
+      <span class="timestamp" id="timestamp">00:00</span>
+    </div>
+
+    <script src="/Vid-Player/script.js"></script>
+  </body>
 </html>
